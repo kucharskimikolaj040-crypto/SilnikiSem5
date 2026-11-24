@@ -4,12 +4,26 @@ using UnityEngine;
 public class UI_StatisticPanel : MonoBehaviour
 {
     public PlayerHealth playerHealth;
+    public PlayerCoin playerCoin;
+    public TextMeshProUGUI coinText;
     public TextMeshProUGUI healthText;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     private void Awake()
     {
         playerHealth.OnAddHealth += PlayerHealth_OnAddHealth;
         playerHealth.OnHealthInnit += PlayerHealth_OnHealthInnit;
+        playerCoin.OnCoinInit += PlayerCoin_OnCoinInit;
+        playerCoin.OnCoinAdd += PlayerCoin_OnCoinAdd;
+    }
+
+    private void PlayerCoin_OnCoinAdd(int obj)
+    {
+        coinText.text = "Coins: " + obj.ToString();
+    }
+
+    private void PlayerCoin_OnCoinInit(int obj)
+    {
+        coinText.text = "Coins: " + obj.ToString();
     }
 
     private void PlayerHealth_OnHealthInnit(int health)
