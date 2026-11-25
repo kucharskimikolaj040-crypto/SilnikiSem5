@@ -18,22 +18,32 @@ public class UI_StatisticPanel : MonoBehaviour
 
     private void PlayerCoin_OnCoinAdd(int obj)
     {
+        ModifyCoinText(obj);
+    }
+
+    private void ModifyCoinText(int obj)
+    {
         coinText.text = "Coins: " + obj.ToString();
     }
 
     private void PlayerCoin_OnCoinInit(int obj)
     {
-        coinText.text = "Coins: " + obj.ToString();
+        ModifyCoinText(obj);
     }
 
     private void PlayerHealth_OnHealthInnit(int health)
+    {
+        ModifyHealthText(health);
+    }
+
+    private void ModifyHealthText(int health)
     {
         healthText.text = "Health: " + health.ToString();
     }
 
     private void PlayerHealth_OnAddHealth(int health)
     {
-        healthText.text = "Health: " + health.ToString();
+        ModifyHealthText(health);
     }
 
     // Update is called once per frame

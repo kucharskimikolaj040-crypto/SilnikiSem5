@@ -27,7 +27,7 @@ public class PlayerHealth : MonoBehaviour
     public void AddHealth(int healthToAdd)
     {
         health += healthToAdd;
-        OnAddHealth?.Invoke(health);
+       
         if (health > maxHealth)
         {
             health = maxHealth;
@@ -36,8 +36,13 @@ public class PlayerHealth : MonoBehaviour
         {
             Die();
         }
+        OnAddHealth?.Invoke(health);
     }
 
+    public void RestoreHealth()
+    {
+        health = maxHealth;
+    }
     private void Die()
     {
         Death?.Invoke();
